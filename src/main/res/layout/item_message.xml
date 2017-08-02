@@ -8,6 +8,11 @@
     android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:orientation="vertical">
 
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
     <ImageView
         android:id="@+id/photoImageView"
         android:layout_width="match_parent"
@@ -29,5 +34,7 @@
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
+
+    <!--</LinearLayout>-->
 
 </LinearLayout>

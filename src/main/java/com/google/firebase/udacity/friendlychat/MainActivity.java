@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +31,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -52,10 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
     private String mUsername;
 
-//    //to access the database
-//    private FirebaseDatabase mFirebaseDatabase;
-//    //the reference object is a class that references to the specific part of the database;
-//    private DatabaseReference mMessagesDatabaseReferences;
+    //to access the database
+    private FirebaseDatabase mFirebaseDatabase;
+    //the reference object is a class that references to the specific part of the database;
+    private DatabaseReference mMessagesDatabaseReferences;
+    //to trigger the message changes
+    private ChildEventListener mChildEventListener;
 
 
     @Override
@@ -65,9 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
         mUsername = ANONYMOUS;
 
-//        mFirebaseDatabase =  FirebaseDatabase.getInstance();
-//        mMessagesDatabaseReferences = mFirebaseDatabase.getReference().child("messages");
-
+        mFirebaseDatabase =  FirebaseDatabase.getInstance();
+        mMessagesDatabaseReferences = mFirebaseDatabase.getReference().child("messages");
 
         // Initialize references to views
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -120,15 +125,61 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: Send messages on click
 
-//                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText()
-//                        .toString(), mUsername, null);
-//
-//                mMessagesDatabaseReferences.push().setValue(friendlyMessage);
+                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText()
+                        .toString(), mUsername, null);
+
+                Log.e("name ", "Saurabh");
+                Log.e("message ", mMessageEditText.getText().toString());
+                mMessagesDatabaseReferences.push().setValue(friendlyMessage);
 
                 // Clear input box
                 mMessageEditText.setText("");
             }
         });
+
+        //to trigger the message changes;
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //called when a child (message) is added
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                //called when a existing child message is changed
+                //dataSnapshot contains data from the databse at a specific location ath the exact time the listener is triggered
+                // as the FriendlyMessage data members are the same as that of the firebase key-value for the message,
+                // then we ned to deserialize it to the friendlyMessage object
+                FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+
+                Log.e("name ", friendlyMessage.getName());
+                Log.e("message ", friendlyMessage.getText());
+
+                mMessageAdapter.add(friendlyMessage);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                //when removed
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                //called when one of the messages change position in the list
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //indicates some sort of error occured when trying to make some changes
+                //typicalley called when we don;t hae permission to read the data
+
+            }
+        };
+
+        //adding the child event listener to the database via the reference;
+        mMessagesDatabaseReferences.addChildEventListener(mChildEventListener);
     }
 
     @Override
