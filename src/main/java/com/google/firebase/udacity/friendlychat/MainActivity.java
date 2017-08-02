@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String mUsername;
 
-//    //to access the database
-//    private FirebaseDatabase mFirebaseDatabase;
-//    //the reference object is a class that references to the specific part of the database;
-//    private DatabaseReference mMessagesDatabaseReferences;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mUsername = ANONYMOUS;
-
-//        mFirebaseDatabase =  FirebaseDatabase.getInstance();
-//        mMessagesDatabaseReferences = mFirebaseDatabase.getReference().child("messages");
 
 
         // Initialize references to views
@@ -119,11 +111,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: Send messages on click
-
-//                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText()
-//                        .toString(), mUsername, null);
-//
-//                mMessagesDatabaseReferences.push().setValue(friendlyMessage);
 
                 // Clear input box
                 mMessageEditText.setText("");
