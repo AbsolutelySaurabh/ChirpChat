@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "3186365737",
+    "firebase_url": "https://chirp-chat-f769a.firebaseio.com",
+    "project_id": "chirp-chat-f769a",
+    "storage_bucket": "chirp-chat-f769a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3186365737:android:64e58dacc0483faa",
+        "android_client_info": {
+          "package_name": "com.google.firebase.udacity.friendlychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3186365737-rnuor82jlrplhu1qbtc1o4spg4uvlvp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDXbUi71wT7Gu1x25aNcthoW8yCU5NHjw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
