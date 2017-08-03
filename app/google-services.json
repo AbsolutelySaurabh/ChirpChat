@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "319621422261",
+    "firebase_url": "https://chirpchat-2.firebaseio.com",
+    "project_id": "chirpchat-2",
+    "storage_bucket": "chirpchat-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319621422261:android:edd6e75b07572d28",
+        "android_client_info": {
+          "package_name": "com.example.saurabh.chirpchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319621422261-hko2jc5hb12u75hd537h8ukk373e64q1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsbR3NaJ6Zoq99DvNcWfB9BsoJ_Pi0ixI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
